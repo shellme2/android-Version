@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            style="@style/first_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/function_parameter_test"
+            android:textColor="@android:color/holo_purple" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            style="@style/zebra_block"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/third_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Request Head:" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(请求头:每个请求服务器都需要传递的必要参数)"
+                android:textColor="@android:color/holo_red_dark" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="apkPackageName:" />
+
+            <EditText
+                android:id="@+id/apkPackageNameEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入app包名" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="apkVersionCode:" />
+
+            <EditText
+                android:id="@+id/apkVersionCodeEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入app的VersionCode"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="deviceModel:" />
+
+            <EditText
+                android:id="@+id/deviceModelEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入机器机型" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="machineId:" />
+
+            <EditText
+                android:id="@+id/machineIdEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入机器序列号" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="deviceOSVersion:" />
+
+            <EditText
+                android:id="@+id/deviceOSVersionEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入机器系统版本" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/localAppCheckBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:onClick="onLocalAppCheck"
+            android:text="@string/version_check_local" />
+
+        <Button
+            android:id="@+id/localReportBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:onClick="onLocalReport"
+            android:text="@string/report_update_loacal"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/appCheckLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- gone -->
+            <TextView
+                style="@style/second_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/version_check"
+                android:visibility="gone" />
+
+            <!-- gone -->
+            <LinearLayout
+                style="@style/zebra_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/third_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Request Params:" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(请求参数:服务器会根据这些参数区分是不同的app请求,返回相应的更新信息)"
+                    android:textColor="@android:color/holo_red_dark" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="versionName:" />
+
+                <EditText
+                    android:id="@+id/paramsVersionNameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入需要检查更新app的versionName" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="versionCode:" />
+
+                <EditText
+                    android:id="@+id/paramsVersionCodeEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入需要检查更新app的versionCode" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="packageName:" />
+
+                <EditText
+                    android:id="@+id/paramsPackageNameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入需要检查更新app的包名" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="md5:" />
+
+                <EditText
+                    android:id="@+id/paramsMd5Et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入需要检查更新app签名的md5值" />
+
+                <EditText
+                    android:id="@+id/paramsApkMd5Et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入需要检查更新app当前版本的md5值" />
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/baiduwenkuParamsAppRbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="百度文库" />
+
+            <CheckBox
+                android:id="@+id/zhihuParamsAppRbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="知乎" />
+
+            <CheckBox
+                android:id="@+id/elemeParamsAppRbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="饿了么" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:onClick="onAppCheck"
+                android:text="@string/version_check" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reportUpdateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/second_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_update" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:onClick="onAppReport"
+                android:text="@string/report_update" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:onClick="onDeleteAll"
+            android:text="@string/delete_all" />
+
+        <LinearLayout
+            style="@style/zebra_block"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/third_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ignore_title" />
+
+            <EditText
+                android:id="@+id/ignorePackageNameEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ignore_packagename" />
+
+            <EditText
+                android:id="@+id/ignoreVersionCodeEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ignore_version_code"
+                android:inputType="number" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onIgnore"
+                    android:text="@string/ignore" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onLogIgnore"
+                    android:text="@string/log_ignore" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ignoreAutoCb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/ignore_auto_get_version" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onClearIgnore"
+                    android:text="@string/ignore_clean" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

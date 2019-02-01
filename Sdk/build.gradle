@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+def gitHead = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+def gitTag = 'git describe --tags'.execute([], project.rootDir).text.trim()
+def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZone("UTC"))
+
+android {
+    compileSdkVersion bfcBuildConfig.compileSdkVersion
+    buildToolsVersion "25.0.0"
+
+    defaultConfig {
+        minSdkVersion bfcBuildConfig.minSdkVersion
+        targetSdkVersion 17
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "GIT_HEAD", "\"${gitHead}\""
+        buildConfigField "String", "GIT_TAG", "\"${gitTag}\""
+        buildConfigField "String", "BUILD_TIME", "\"${buildTime}\""
+        buildConfigField "String", "LIBRARY_NAME", "\"${POM_ARTIFACT_ID}\""
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android.libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('-release.aar')) {
+                def fileName = POM_ARTIFACT_ID + "-" + VERSION_NAME + ".aar";
+                output.outputFile = new File(outputFile.parent, fileName)
+                println "output： " + output.outputFile
+            }
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+// 导入上传Library到Maven仓库的配置
+apply from:"http://172.28.2.93/bfc/Bfc/raw/develop/common-config/maven-push.gradle"
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile bfcBuildConfig.deps["bfc-download"]
+    compile bfcBuildConfig.deps["bfc-version-core"]
+//    compile 'com.eebbk.bfc:bfc-version-core:0.0.5'
+//        compile project(':CoreSdk')
+}

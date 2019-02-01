@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.eebbk.bfc.sdk.version.demo.MenuActivity">
+
+    <TextView
+        style="@style/first_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="错误码测试"
+        android:textColor="@android:color/holo_purple" />
+
+    <Spinner
+        android:layout_marginTop="11dp"
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="开始单个错误码测试"
+        android:onClick="onSingle"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="开始一键测试"
+        android:onClick="onOneKey"/>
+
+    <TextView
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@android:color/black"
+        android:id="@+id/checkResultTv" />
+
+</LinearLayout>

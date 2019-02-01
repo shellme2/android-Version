@@ -1,0 +1,8 @@
+1.将zhihu_3.2.0_307.apk和baiduwenku_37.apk, eleme_107.apk在测试手机上安装
+2.sd卡上创建文件夹/mnt/sdcard/.SmartUpdate/apk/,或者跑一次demo中 业务库->功能测试->获取本地app版本更新信息,也会自动创建
+3.将 zhihu_3.2.0_307.apk, eleme_107.apk 和 baiduwenku_37.apk 拷贝到手机的/mnt/sdcard/.SmartUpdate/apk/
+
+注:如果看不到隐藏文件,也可以用命令拷贝
+adb push baiduwenku_37.apk /mnt/sdcard/.SmartUpdate/apk/
+adb push zhihu_3.2.0_307.apk /mnt/sdcard/.SmartUpdate/apk/
+adb push eleme_107.apk /mnt/sdcard/.SmartUpdate/apk/

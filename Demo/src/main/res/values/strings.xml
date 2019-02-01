@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">BfcVersionDemo</string>
+
+    <string name="core_lib">核心库</string>
+    <string name="service_lib">业务库</string>
+
+    <string name="function_test">功能测试</string>
+    <string name="performance_test">性能测试</string>
+    <string name="errorCode_test">错误码测试</string>
+    <string name="config">配置</string>
+
+    <string name="version_check">获取指定更新版本信息</string>
+    <string name="version_check_local">获取当前更新版本信息</string>
+    <string name="report_update">上报指定app升级信息</string>
+    <string name="report_update_loacal">上报本地app升级信息</string>
+    <string name="delete_all">删除所有任务</string>
+    <string name="ignore_title">忽略版本设置</string>
+    <string name="ignore_packagename">请输入需要忽略的app包名</string>
+    <string name="ignore_version_code">请输入需要忽略的版本 version code</string>
+    <string name="ignore">忽略此版本</string>
+    <string name="log_ignore">打印忽略此版本信息</string>
+    <string name="ignore_clean">清空忽略此版本记录</string>
+    <string name="ignore_auto_get_version">是否自动填写服务器返回版本信息</string>
+
+    <string name="function_parameter_test">参数测试</string>
+
+    <string name="block_canary_display_activity_label">Version Block</string>
+    <string name="leak_canary_display_activity_label">Version Leaks</string>
+</resources>

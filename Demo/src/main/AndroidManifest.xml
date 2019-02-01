@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.eebbk.bfc.sdk.version.demo">
+
+    <!-- 强制亮屏 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:name=".MyApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 主菜单界面 -->
+        <activity android:name=".MenuActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- ==============核心库 start============== -->
+
+        <!-- 核心库主菜单界面 -->
+        <activity android:name=".corelib.CoreTestMenuActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 核心库参数测试界面 -->
+        <activity android:name=".corelib.function.CoreParameterActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- ==============核心库 end============== -->
+
+        <!-- ==============业务库 start============== -->
+
+        <!-- 业务库主菜单界面 -->
+        <activity android:name=".servicelib.ServiceTestMenuActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 业务库参数测试界面 -->
+        <activity android:name=".servicelib.function.ServiceParameterActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 业务库配置界面 -->
+        <activity android:name=".servicelib.config.ServiceConfigActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 业务库循环 -->
+        <activity android:name=".servicelib.performance.loop.ServiceLoopActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 业务库错误码测试 -->
+        <activity android:name=".servicelib.errorcode.ErrorCodeActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- ==============业务库 end============== -->
+
+    </application>
+
+</manifest>

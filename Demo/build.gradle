@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin:'bbk_checker'
+
+android {
+
+    compileSdkVersion bfcBuildConfig.compileSdkVersion
+    buildToolsVersion "25.0.0"
+
+    // 签名
+    signingConfigs {
+        release {
+            keyAlias bfcBuildConfig.signing["keyAlias"]
+            keyPassword bfcBuildConfig.signing["keyPassword"]
+            storeFile file('keystore.jks')
+            storePassword bfcBuildConfig.signing["storePassword"]
+        }
+    }
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+
+        minSdkVersion bfcBuildConfig.minSdkVersion
+        targetSdkVersion 17
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+    }
+
+    buildTypes {
+        release {
+            // zipAlign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            // 混淆
+            minifyEnabled false
+            // 加载默认混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 签名
+            signingConfig signingConfigs.release
+        }
+    }
+
+    // 修改apk名称，并放到apk目录下
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('-release.apk')) {
+                def fileName = outputFile.name;
+                fileName = fileName.replace("Demo-release.apk", "BfcVersionDemo.apk")
+                output.outputFile = new File(file('./../apk'), fileName)
+                println "输出文件位置： " + output.outputFile
+            }
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    testCompile 'junit:junit:4.12'
+    compile bfcBuildConfig.deps["bfc-blockcanary"]
+    compile bfcBuildConfig.deps["bfc-leakcanary"]
+    compile project(':Sdk')
+}

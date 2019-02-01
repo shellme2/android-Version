@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.eebbk.bfc.sdk.version.demo.MenuActivity">
+
+    <TextView
+        style="@style/first_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="疲劳测试"
+        android:textColor="@android:color/holo_purple" />
+
+    <Spinner
+        android:layout_marginTop="11dp"
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<CheckBox-->
+        <!--android:id="@+id/baiduwenkuParamsAppRbtn"-->
+        <!--android:checked="true"-->
+        <!--android:text="百度文库"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<CheckBox-->
+        <!--android:id="@+id/zhihuParamsAppRbtn"-->
+        <!--android:text="知乎"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="开始疲劳测试"
+        android:onClick="onStartLoop"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="停止疲劳测试"
+        android:onClick="onStopLoop"/>
+
+    <ProgressBar
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar" />
+
+</LinearLayout>
