@@ -404,8 +404,4 @@ A：请检测后台是否已经添加发布该机器序列号。测试时，很�
 - bfc-json
 - bfc-http
 - bfc-download
-- bfc-common
-	
-# 联系人
-- 何思宁
-- 工号：20251494
+- bfc-common	
